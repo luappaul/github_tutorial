@@ -15,27 +15,15 @@ import numpy as np
 
 
 def max_index(X):
-    """Return the index of the maximum in a numpy array.
+    
+    if X is None:
+        raise ValueError("cannot be None")
 
-    Parameters
-    ----------
-    X : ndarray of shape (n_samples, n_features)
-        The input array.
+    if not isinstance(X, np.ndarray):
+        raise ValueError("should be a numpy array")
 
-    Returns
-    -------
-    (i, j) : tuple(int)
-        The row and columnd index of the maximum.
+    if X.ndim != 2:
+        raise ValueError("should be 2D")
 
-    Raises
-    ------
-    ValueError
-        If the input is not a numpy array or
-        if the shape is not 2D.
-    """
-    i = 0
-    j = 0
-
-    # TODO
-
-    return i, j
+    max_id = np.unravel_index(np.argmax(X), X.shape)
+    return max_id
